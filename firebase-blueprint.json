@@ -1,0 +1,106 @@
+{
+  "entities": {
+    "Booking": {
+      "title": "Booking",
+      "description": "Dental appointment booking record",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the booking"
+        },
+        "patientName": {
+          "type": "string",
+          "description": "Full name of the patient"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Mobile phone number of the patient"
+        },
+        "gender": {
+          "type": "string",
+          "description": "Gender of the patient"
+        },
+        "specialtyId": {
+          "type": "string",
+          "description": "Requested specialty identifier"
+        },
+        "doctorId": {
+          "type": "string",
+          "description": "Assigned doctor identifier"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of appointment (YYYY-MM-DD)"
+        },
+        "timeSlot": {
+          "type": "string",
+          "description": "Time slot of appointment"
+        },
+        "status": {
+          "type": "string",
+          "description": "Booking status"
+        },
+        "queueNumber": {
+          "type": "integer",
+          "description": "Daily queue turn number"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Patient complaint or notes"
+        },
+        "isArrived": {
+          "type": "boolean",
+          "description": "Whether the patient arrived at the clinic"
+        },
+        "arrivedAt": {
+          "type": "string",
+          "description": "Arrival timestamp"
+        }
+      },
+      "required": ["id", "patientName", "phone", "date", "timeSlot", "status"]
+    },
+    "Patient": {
+      "title": "Patient",
+      "description": "Unique patient record keyed by phone number",
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "description": "Unique phone helper primary ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Current patient name"
+        },
+        "gender": {
+          "type": "string",
+          "description": "Gender of patient"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the patient first registered"
+        },
+        "notes": {
+          "type": "string",
+          "description": "General clinical notes"
+        }
+      },
+      "required": ["phone", "name"]
+    }
+  },
+  "firestore": {
+    "bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Dental clinic patient bookings"
+    },
+    "patients/{phone}": {
+      "schema": "Patient",
+      "description": "Patient index records"
+    }
+  }
+}

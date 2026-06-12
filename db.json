@@ -1,0 +1,50 @@
+[
+  {
+    "id": "book-1",
+    "patientName": "سلمان محمد العمري",
+    "phone": "0512345678",
+    "gender": "ذكر",
+    "specialtyId": "surgery",
+    "doctorId": "doc-dawidar",
+    "date": "2026-06-10",
+    "timeSlot": "05:30 م",
+    "status": "completed",
+    "queueNumber": 1,
+    "createdAt": "2026-06-10T12:18:03.541Z",
+    "notes": "استشارة لزراعة ضرسين تالفين وفحص كثافة العظام عبر الأشعة ثلاثية الأبعاد.",
+    "isArrived": true,
+    "arrivedAt": "2026-06-10T12:18:03.541Z"
+  },
+  {
+    "id": "book-2",
+    "patientName": "هند خالد العتيبي",
+    "phone": "0544558899",
+    "gender": "أنثى",
+    "specialtyId": "ortho",
+    "doctorId": "doc-mona",
+    "date": "2026-06-10",
+    "timeSlot": "07:00 م",
+    "status": "in-progress",
+    "queueNumber": 2,
+    "createdAt": "2026-06-10T12:18:03.541Z",
+    "notes": "ضبط وشد سلك تقويم الأسنان المعدني العلوي ومراجعة الأطراف الدقيقة.",
+    "isArrived: true",
+    "isArrived": true,
+    "arrivedAt": "2026-06-10T12:18:03.541Z"
+  },
+  {
+    "id": "book-3",
+    "patientName": "وليد عبد الرحمن آل سعود",
+    "phone": "0555667788",
+    "gender": "ذكر",
+    "specialtyId": "endo",
+    "doctorId": "doc-yasser",
+    "date": "2026-06-10",
+    "timeSlot": "08:30 م",
+    "status": "waiting",
+    "queueNumber": 3,
+    "createdAt": "2026-06-10T12:18:03.541Z",
+    "notes": "ألم مستمر وشديد جداً يزداد ليلاً ويشتد مع المشروبات الباردة والساخنة.",
+    "isArrived": false
+  }
+]

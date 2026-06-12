@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global safety net catches all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions for validation
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming(req) {
+      return req.resource.data;
+    }
+
+    function existing(res) {
+      return res.data;
+    }
+
+    // Booking entity validation
+    function isValidBooking(data) {
+      return data.id is string
+        && data.patientName is string && data.patientName.size() <= 100
+        && data.phone is string && data.phone.size() <= 30
+        && data.gender is string && data.gender.size() <= 20
+        && data.specialtyId is string && data.specialtyId.size() <= 100
+        && data.doctorId is string && data.doctorId.size() <= 100
+        && data.date is string && data.date.size() <= 20
+        && data.timeSlot is string && data.timeSlot.size() <= 30
+        && data.status is string && data.status.size() <= 30
+        && (data.queueNumber is int || data.queueNumber is float)
+        && data.createdAt is string;
+    }
+
+    // Patient entity validation
+    function isValidPatient(data) {
+      return data.phone is string && data.phone.size() <= 30
+        && data.name is string && data.name.size() <= 100
+        && data.gender is string && data.gender.size() <= 20
+        && data.createdAt is string;
+    }
+
+    // Bookings collection rules
+    match /bookings/{bookingId} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if isValidId(bookingId) && isValidBooking(incoming(request));
+      allow update: if isValidId(bookingId) 
+        && isValidBooking(incoming(request))
+        && incoming(request).id == existing(resource).id;
+      allow delete: if true;
+    }
+
+    // Patients collection rules
+    match /patients/{phone} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if isValidId(phone) && isValidPatient(incoming(request));
+      allow update: if isValidId(phone) 
+        && isValidPatient(incoming(request))
+        && incoming(request).phone == existing(resource).phone;
+      allow delete: if true;
+    }
+  }
+}

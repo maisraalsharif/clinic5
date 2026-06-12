@@ -1,0 +1,6 @@
+{
+  "name": "Dawidar Dental Center",
+  "description": "الموقع الرسمي لمركز دويدار لطب الأسنان مع بوابة الحجز التفاعلي المباشر بالواتساب والاتصال الهاتفي وتأكيد حضور المرضى الفوري عبر الـ API وقاعدة البيانات",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
